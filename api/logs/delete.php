@@ -19,10 +19,10 @@
     $data = json_decode(file_get_contents("php://input"));
 
     //Set ID for column to delete
-    if(!isset($data->id) || !($data->id) > 0){
+    if(!isset($data->log_id) || $data->log_id < 0){
         die(json_encode(array("success" => false, "message" => "ID for Log to delete is required")));
     }else{
-        $log->id = $data->id;
+        $log->id = $data->log_id;
         //update status column to a static value of 0 
         $log->status = 0;
     }

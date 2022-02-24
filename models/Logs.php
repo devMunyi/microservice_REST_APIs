@@ -52,6 +52,8 @@ class Logs
     //Get all logs 
     public function get_all()
     {
+        $data = []; //intialize data to bind as an empty array
+
         //Create query 
         $query = "SELECT
              tl.id,
@@ -62,6 +64,7 @@ class Logs
              FROM " . $this->table . " tl 
              LEFT JOIN 
                  tbl_services ts ON tl.service_id = ts.id
+             WHERE tl.status = :status
              ORDER BY
              tl.id DESC";
 
@@ -69,8 +72,13 @@ class Logs
         //prepare statement/query 
         $stmt = $this->conn->prepare($query);
 
+        ///Set binding data
+        $data = [
+            "status" => $this->status
+        ];
+
         //Execute query 
-        if ($stmt->execute()) {
+        if ($stmt->execute($data)) {
             return $stmt;
         } else {
             printf("Error: %s.\n", $stmt->error);

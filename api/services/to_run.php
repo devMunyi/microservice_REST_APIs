@@ -128,7 +128,7 @@
         echo json_encode($services_arr);
     }else{
         echo json_encode(
-            array("success" => false, "message" => "No service found")
+            array("success" => false, "message" => "No service to run at the current time")
         );
     }
 

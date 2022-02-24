@@ -19,10 +19,10 @@
     $data = json_decode(file_get_contents("php://input"));
 
     //Set ID for column to delete
-    if(!isset($data->id) || !($data->id) > 0){
+    if(!isset($data->service_id) || $data->service_id < 0){
         die(json_encode(array("success" => false, "message" => "ID for Service address to delete is required")));
     }else{
-        $service->id = $data->id;
+        $service->id = $data->service_id;
         //update status column to a static value of 0 
         $service->status = 0;
     }
