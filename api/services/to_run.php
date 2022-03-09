@@ -56,6 +56,7 @@
              //Set logs properties 
              $logs->text = $response;
              $logs->service_id = $id;
+
              //Insert logs/response to the database 
              $logs->addlogs();
 
@@ -66,35 +67,35 @@
                 $next_r_timestamp_ =  date_format($r_timestamp_, "Y-m-d H:i:s");
 
                 $service->update_next_r_timestamp($id, $next_r_timestamp_);
-            }else if($unit === "HOURS" && (int) $frequency > 0){
+            }elseif($unit === "HOURS" && (int) $frequency > 0){
                 //update next run time 
                 $r_timestamp_ = date_create($r_timestamp);
                 date_modify($r_timestamp_, "$frequency hours");
                 $next_r_timestamp_ =  date_format($r_timestamp_, "Y-m-d H:i:s");
 
                 $service->update_next_r_timestamp($id, $next_r_timestamp_);
-            }else if($unit === "DAYS" && (int) $frequency > 0){
+            }elseif($unit === "DAYS" && (int) $frequency > 0){
                 //update next run time 
                 $r_timestamp_ = date_create($r_timestamp);
                 date_modify($r_timestamp_, "$frequency days");
                 $next_r_timestamp_ =  date_format($r_timestamp_, "Y-m-d H:i:s");
 
                 $service->update_next_r_timestamp($id, $next_r_timestamp_);
-            }else if($unit === "WEEKS" && (int) $frequency > 0){
+            }elseif($unit === "WEEKS" && (int) $frequency > 0){
                 //update next run time 
                 $r_timestamp_ = date_create($r_timestamp);
                 date_modify($r_timestamp_, "$frequency weeks");
                 $next_r_timestamp_ =  date_format($r_timestamp_, "Y-m-d H:i:s");
 
                 $service->update_next_r_timestamp($id, $next_r_timestamp_);
-            }else if($unit === "MONTHS" && (int) $frequency > 0){
+            }elseif($unit === "MONTHS" && (int) $frequency > 0){
                 //update next run time 
                 $r_timestamp_ = date_create($r_timestamp);
                 date_modify($r_timestamp_, "$frequency months");
                 $next_r_timestamp_ =  date_format($r_timestamp_, "Y-m-d H:i:s");
 
                 $service->update_next_r_timestamp($id, $next_r_timestamp_);
-            }else if($unit === "YEARS" && (int) $frequency > 0){
+            }elseif($unit === "YEARS" && (int) $frequency > 0){
                 //update next run time 
                 $r_timestamp_ = date_create($r_timestamp);
                 date_modify($r_timestamp_, "$frequency months");
